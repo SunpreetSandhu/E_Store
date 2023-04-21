@@ -1,0 +1,26 @@
+{
+  "name": "e_store",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SunpreetSandhu/E_Store.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SunpreetSandhu/E_Store/issues"
+  },
+  "homepage": "https://github.com/SunpreetSandhu/E_Store#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "stripe": "^12.2.0"
+  }
+}
