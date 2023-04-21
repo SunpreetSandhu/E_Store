@@ -3,7 +3,6 @@
 //coffee: price_1MzDySJ6ar54FA8lWCDechX0
 //sunglasses: price_1MzDzSJ6ar54FA8lOeY71Mzr
 //camera: price_1MzE0FJ6ar54FA8lgapF8oub
-
 const express = require("express");
 var cors = require("cors");
 const stripe = require("stripe")(
@@ -16,8 +15,25 @@ app.use(express.static("public"));
 app.use(express.json());
 
 app.post("/checkout", async (req, res) => {
-  let lineItems = [];
+  /*
+    req.body.items
+    [
+        {
+            id: 1,
+            quantity: 3
+        }
+    ]
+    stripe wants
+    [
+        {
+            price: 1,
+            quantity: 3
+        }
+    ]
+    */
+  console.log(req.body);
   const items = req.body.items;
+  let lineItems = [];
   items.forEach((item) => {
     lineItems.push({
       price: item.id,
@@ -25,11 +41,11 @@ app.post("/checkout", async (req, res) => {
     });
   });
 
-  const session = await stripe.checout.sessions.create({
+  const session = await stripe.checkout.sessions.create({
     line_items: lineItems,
     mode: "payment",
-    success_url: "http://localhost:3000/success",
-    cancel_url: "http://localhost:3000/cancel",
+    success_url: "http://localhost:3000/Success",
+    cancel_url: "http://localhost:3000/Cancel",
   });
 
   res.send(
